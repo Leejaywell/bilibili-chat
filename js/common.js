@@ -54,7 +54,7 @@ const method = {
  	method.init();
   },
   data: {
-  	prefixs: ['人家要听', '帅哥要听', "美女要听"],
+  	prefixs: ['人家要听', '给帅哥放', "给美女放"],
   	roomId: '22659612',
     timer: null,
     socket: null,
