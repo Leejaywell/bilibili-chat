@@ -54,7 +54,7 @@ const method = {
  	method.init();
   },
   data: {
-  	prefix: '人家要听',
+  	prefixs: ['人家要听', '帅哥要听', "美女要听"],
   	roomId: '22659612',
     timer: null,
     socket: null,
@@ -155,14 +155,16 @@ const method = {
         };
         danmu.name = jsons.info[2][1];
         danmu.message = jsons.info[1];
-        if (danmu.message.startsWith(method.data.prefix)) {
-        	danmu.message = danmu.message.replace(method.data.prefix, '');
-          danmu.message = danmu.message.replace(' ', '');
-          if (danmu.message) {
-            method.danmus.push(danmu);
+        for(let prefix of method.data.prefixs) {
+          if (danmu.message.startsWith(prefix)) {
+            danmu.message = danmu.message.replace(prefix, '');
+            danmu.message = danmu.message.replace(' ', '');
+            if (danmu.message) {
+              method.danmus.push(danmu);
+            }
+            // method.tts.push(danmu.message);
           }
-        	// method.tts.push(danmu.message);
-        }
+        }        
         break;
       default:
         //			  console.log("new data:"+jsons);
